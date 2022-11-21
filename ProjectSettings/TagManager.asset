@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - SceneOneTrigger
+  - SceneTwoTrigger
+  - Water
+  - SceneThreeTrigger
+  - SceneFourTrigger
+  - SceneFiveTrigger
+  - SceneSixTrigger
   layers:
   - Default
   - TransparentFX
@@ -13,8 +19,8 @@ TagManager:
   - Water
   - UI
   - Post Processing
-  - 
-  - 
+  - No Post
+  - PlayerLayer
   - 
   - 
   - 

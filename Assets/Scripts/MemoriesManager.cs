@@ -9,6 +9,11 @@ public enum MemoryType
 {
     None,
     SceneOne,
+    SceneTwo,
+    SceneThree,
+    SceneFour,
+    SceneFive,
+    SceneSix,
 }
 
 [Serializable]
@@ -16,6 +21,7 @@ public class Memory
 {
     public MemoryType memoryType;
     public Animator memoryAnimator;
+    public GameObject memoryTrigger;
 }
 
 public class MemoriesManager : MonoBehaviour
@@ -25,7 +31,7 @@ public class MemoriesManager : MonoBehaviour
     [SerializeField]
     private List<Memory> memoriesList = new();
 
-    private readonly Dictionary<MemoryType, Animator> _memories = new Dictionary<MemoryType, Animator>();
+    private readonly Dictionary<MemoryType, Memory> _memories = new Dictionary<MemoryType, Memory>();
 
     internal bool IsMemoryPlaying;
     
@@ -37,7 +43,7 @@ public class MemoriesManager : MonoBehaviour
     {
         foreach (var memory in memoriesList)
         {
-            _memories[memory.memoryType] = memory.memoryAnimator;
+            _memories[memory.memoryType] = memory;
         }
 
         memoriesList = null;
@@ -54,9 +60,16 @@ public class MemoriesManager : MonoBehaviour
             memoryGameObject.SetActive(false);
             memoryGameObject.GetComponent<Animator>().SetBool(PlayAnimationParam, false);
         });
-
     }
 
+    public Vector2 GetMemoryTriggerPosition(MemoryType memoryType)
+    {
+        if (_memories.ContainsKey(memoryType))
+            return _memories[memoryType].memoryTrigger.transform.position;
+        
+        return Vector2.zero;
+    }
+    
     public IEnumerator StartMemory(MemoryType memoryType)
     {
         if (IsMemoryPlaying)
@@ -64,18 +77,17 @@ public class MemoriesManager : MonoBehaviour
         
         IsMemoryPlaying = true;
 
-        var animator = _memories[memoryType];
+        var animator = _memories[memoryType].memoryAnimator;
         
         animator.gameObject.SetActive(true);
 
         animator.SetBool(PlayAnimationParam, true);
         animator.gameObject.GetComponent<SpriteRenderer>().DOFade(1f, .5f);
         
-        //.Interp(_colorGrading.saturation.value, 100, 1f);
-        DOTween.To(() => _colorGrading.saturation, x => _colorGrading.saturation.value = x, -100f, .5f).OnComplete(() =>
+        DOTween.To(() => _colorGrading.saturation, x => _colorGrading.saturation.value = x, 100f, .5f).OnComplete(() =>
         {
             DOTween.To(() => _colorGrading.saturation, x => _colorGrading.saturation.value = x,
-                0, GetCurrentAnimTime(animator));
+                -100f, GetCurrentAnimTime(animator));
         });
     }
 

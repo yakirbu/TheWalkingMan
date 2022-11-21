@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private MemoriesManager _memoriesManager;
     
     private MemoryType _memoryType;
-    
+
     public void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -28,6 +28,14 @@ public class PlayerController : MonoBehaviour
     {
         return _horizontalMovement != 0 && !_memoriesManager.IsMemoryPlaying;
     }
+
+    private bool IsLookingAtMemory(MemoryType memoryType)
+    {
+        var isLookingRight = Math.Abs(transform.localRotation.y - 0) < 0.1f;
+        var memoryPosition = _memoriesManager.GetMemoryTriggerPosition(memoryType);
+        return ((memoryPosition.x >= transform.position.x) && isLookingRight) ||
+               ((memoryPosition.x < transform.position.x) && !isLookingRight);
+    }
     
     public void FixedUpdate()
     {
@@ -37,7 +45,7 @@ public class PlayerController : MonoBehaviour
             MovePlayer(new Vector2(_horizontalMovement, 0));
 
             SetWalkingAnimation(true);
-        } 
+        }
         else
         {
             SetWalkingAnimation(false);
@@ -62,23 +70,39 @@ public class PlayerController : MonoBehaviour
 
 
     bool _isNearMemory = false;
-    void OnTriggerEnter2D(Collider2D other) {
-        
+    void OnTriggerEnter2D(Collider2D other) 
+    {
         switch (other.gameObject.tag)
         {
             case "SceneOneTrigger":
                 _memoryType = MemoryType.SceneOne;
                 break;
+            case "SceneTwoTrigger":
+                _memoryType = MemoryType.SceneTwo;
+                break;
+            case "SceneThreeTrigger":
+                _memoryType = MemoryType.SceneThree;
+                break;
+            case "SceneFourTrigger":
+                _memoryType = MemoryType.SceneFour;
+                break;
+            case "SceneFiveTrigger":
+                _memoryType = MemoryType.SceneFive;
+                break;
+            case "SceneSixTrigger":
+                _memoryType = MemoryType.SceneSix;
+                break;
             default:
                 _memoryType = MemoryType.None;
+                Debug.LogWarning("Unrecognized memory!");
                 break;
         }
         Debug.Log(other.gameObject.tag);
         _isNearMemory = true;
-
     }
  
-    void OnTriggerExit2D(Collider2D other) {
+    void OnTriggerExit2D(Collider2D other) 
+    {
         _isNearMemory = false;
     }
 
@@ -86,10 +110,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && _memoryType != MemoryType.None)
         {
-            if(_isNearMemory)
+            if (_isNearMemory && IsLookingAtMemory(_memoryType))
+            {
                 StartCoroutine(_memoriesManager.StartMemory(_memoryType));
+            }
         }
     }
-    
-
 }
