@@ -83,19 +83,22 @@ public class MemoriesManager : MonoBehaviour
 
         animator.SetBool(PlayAnimationParam, true);
         animator.gameObject.GetComponent<SpriteRenderer>().DOFade(1f, .5f);
+
+        float animTime = GetCurrentAnimTime(animator);
         
-        DOTween.To(() => _colorGrading.saturation, x => _colorGrading.saturation.value = x, 100f, .5f).OnComplete(() =>
+        DOTween.To(() => _colorGrading.saturation, x => _colorGrading.saturation.value = x, 0f, animTime * 3/4).OnComplete(() =>
         {
             DOTween.To(() => _colorGrading.saturation, x => _colorGrading.saturation.value = x,
-                -100f, GetCurrentAnimTime(animator));
+                -100f, animTime / 2);
         });
     }
 
     private float GetCurrentAnimTime(Animator animator)
     {
-        var currentClipInfo = animator.GetCurrentAnimatorClipInfo(0);
-        var currentClipLength = currentClipInfo[0].clip.length;
-        return currentClipLength;
+        return animator.runtimeAnimatorController.animationClips[0].length;
+        // var currentClipInfo = animator.GetCurrentAnimatorClipInfo(0);
+        // var currentClipLength = currentClipInfo[0].clip.length;
+        // return currentClipLength;
     }
     
 }

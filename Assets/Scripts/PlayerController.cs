@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private static readonly int IsWalkingParam = Animator.StringToHash("isWalking");
     private static readonly int SceneOneMemory = Animator.StringToHash("MemorySceneOne");
-    
+
     public float moveSpeed = 2f;
 
     private float _horizontalMovement;
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.localRotation = Quaternion.Euler(0, _horizontalMovement < 0 ? 180 : 0, 0);
             MovePlayer(new Vector2(_horizontalMovement, 0));
-
+            
             SetWalkingAnimation(true);
         }
         else
