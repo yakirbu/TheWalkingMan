@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,12 @@ public class SaturationHandler : MonoBehaviour
     private MemoriesManager memoriesManager;
 
     [SerializeField] private AudioSource hornSound;
-    
+
+    public void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
@@ -33,11 +39,17 @@ public class SaturationHandler : MonoBehaviour
     IEnumerator MoveToMainMenu()
     {
         hornSound.Play();
-        var fader = CameraFader.NewFadeOut(2f);
+        var fader = CameraFader.NewFadeOut(2f, waitUntilDestroy: 6f);
 
         yield return new WaitForSeconds(7f);
  
         var asyncOperation = SceneManager.LoadSceneAsync("Scenes/opening_scene", LoadSceneMode.Single);
-        asyncOperation.completed += operation => CameraFader.NewFadeIn(0.5f);
+        asyncOperation.completed += operation =>
+        {
+            CameraFader.NewFadeIn(1f).endCall = () =>
+            {
+                Destroy(this);
+            };
+        };
     }
 }

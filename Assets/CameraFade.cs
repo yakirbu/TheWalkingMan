@@ -56,7 +56,8 @@ public class CameraFader : MonoBehaviour {
 	public endFunction endCall;
 	
 	Texture2D blackTex;
-	
+
+	public float waitUntilDestroy;
 	public bool fadeout = false;
 	public float delay = 0.0f;
 	float startTime = 0f;
@@ -128,7 +129,7 @@ public class CameraFader : MonoBehaviour {
 
 	IEnumerator SetDestroy()
 	{
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(waitUntilDestroy);
 		needDestroy = true;
 	}
 	
@@ -160,13 +161,14 @@ public class CameraFader : MonoBehaviour {
 		return fader;
 	}
 	
-	public static CameraFader NewFadeOut(float duration = 1f, float delay = 0.0f) {
+	public static CameraFader NewFadeOut(float duration = 1f, float delay = 0.0f, float waitUntilDestroy = 0.2f) {
 		GameObject go = new GameObject("CameraFader");
 		DontDestroyOnLoad(go);
 		CameraFader fader = go.AddComponent<CameraFader>();
 		fader.fadeout = true;
 		fader.duration = duration;
 		fader.delay = delay;
+		fader.waitUntilDestroy = waitUntilDestroy;
 		return fader;
 	}
 }
