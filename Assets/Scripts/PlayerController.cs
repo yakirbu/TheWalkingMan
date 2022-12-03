@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private static readonly int IsWalkingParam = Animator.StringToHash("isWalking");
     private static readonly int SceneOneMemory = Animator.StringToHash("MemorySceneOne");
+    private static readonly int MemoryHeadAnimation = Animator.StringToHash("memoryHeadAnimation");
 
     public float moveSpeed = 2f;
 
@@ -14,14 +15,23 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private MemoriesManager _memoriesManager;
+
+    [SerializeField]
+    private GameObject arrowsGuide;
     
     private MemoryType _memoryType;
+
+    private void Awake()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+    }
 
     public void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _memoriesManager = FindObjectOfType<MemoriesManager>();
+        ResetPlayerPosition();
     }
 
     private bool CanMove()
@@ -43,6 +53,9 @@ public class PlayerController : MonoBehaviour
         {
             transform.localRotation = Quaternion.Euler(0, _horizontalMovement < 0 ? 180 : 0, 0);
             MovePlayer(new Vector2(_horizontalMovement, 0));
+            
+            if(arrowsGuide.activeSelf)
+                arrowsGuide.SetActive(false);
             
             SetWalkingAnimation(true);
         }
@@ -97,23 +110,47 @@ public class PlayerController : MonoBehaviour
                 Debug.LogWarning("Unrecognized memory!");
                 break;
         }
-        Debug.Log(other.gameObject.tag);
+        
         _isNearMemory = true;
     }
- 
+
+    private bool _hideMemoryGuideButton;
+
     void OnTriggerExit2D(Collider2D other) 
     {
         _isNearMemory = false;
+        _hideMemoryGuideButton = false;
+        _memoriesManager.HideMemoryButtonGuide();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _memoryType != MemoryType.None)
+        if (_isNearMemory)
         {
-            if (_isNearMemory && IsLookingAtMemory(_memoryType))
+            if(!_hideMemoryGuideButton)
+                _memoriesManager.ShowMemoryButtonGuide(transform.position);
+            
+            if (!Input.GetKeyDown(KeyCode.Space) || _memoryType == MemoryType.None) 
+                return;
+            
+            _memoriesManager.HideMemoryButtonGuide();
+            _hideMemoryGuideButton = true;
+            
+            if (IsLookingAtMemory(_memoryType))
             {
+                //_animator.SetTrigger(MemoryHeadAnimation);
                 StartCoroutine(_memoriesManager.StartMemory(_memoryType));
             }
         }
+        
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ResetPlayerPosition();
+        }
+    }
+
+    private void ResetPlayerPosition()
+    {
+        transform.position = new Vector3(-2.59f, -5.3f, 0);
     }
 }
