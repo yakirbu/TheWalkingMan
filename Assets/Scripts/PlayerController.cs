@@ -15,9 +15,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private MemoriesManager _memoriesManager;
-
-    [SerializeField]
-    private GameObject arrowsGuide;
+    
+    [SerializeField] private AudioSource memoryStartSound;
+    [SerializeField] private AudioSource footstepsSound;
+    [SerializeField] private GameObject arrowsGuide;
     
     private MemoryType _memoryType;
 
@@ -57,10 +58,13 @@ public class PlayerController : MonoBehaviour
             if(arrowsGuide.activeSelf)
                 arrowsGuide.SetActive(false);
             
+            if(!footstepsSound.isPlaying)
+                footstepsSound.Play();
             SetWalkingAnimation(true);
         }
         else
         {
+            footstepsSound.Stop();
             SetWalkingAnimation(false);
         }
     }
@@ -80,8 +84,7 @@ public class PlayerController : MonoBehaviour
     {
         _horizontalMovement = value.Get<Vector2>().x;
     }
-
-
+    
     bool _isNearMemory = false;
     void OnTriggerEnter2D(Collider2D other) 
     {
@@ -111,7 +114,8 @@ public class PlayerController : MonoBehaviour
                 break;
         }
         
-        _isNearMemory = true;
+        if(_memoryType != MemoryType.None)
+            _isNearMemory = true;
     }
 
     private bool _hideMemoryGuideButton;
@@ -133,6 +137,7 @@ public class PlayerController : MonoBehaviour
             if (!Input.GetKeyDown(KeyCode.Space) || _memoryType == MemoryType.None) 
                 return;
             
+            memoryStartSound.Play();
             _memoriesManager.HideMemoryButtonGuide();
             _hideMemoryGuideButton = true;
             

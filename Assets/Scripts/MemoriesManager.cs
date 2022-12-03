@@ -38,7 +38,7 @@ public class MemoriesManager : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer memoryButtonGuide;
-    
+
     internal bool IsMemoryPlaying;
     
     private PostProcessVolume _postProcess;
@@ -106,15 +106,19 @@ public class MemoriesManager : MonoBehaviour
 
         // if (saturationTween.IsPlaying())
         //     yield return new WaitWhile(() => saturationTween.IsPlaying());
-        
-        DOTween.To(() => _colorGrading.saturation, x => _colorGrading.saturation.value = x, 0f, animTime * 3/4).OnComplete(() =>
+
+       
+        Saturate(0f, animTime * 3 / 4).OnComplete(() =>
         {
-            DOTween.To(() => _colorGrading.saturation, x => _colorGrading.saturation.value = x,
-                -100f, animTime * 1.2f);
+            Saturate(-100f, animTime * 1.2f);
         });
-        
     }
 
+    public TweenerCore<float, float, FloatOptions> Saturate(float endValue, float duration)
+    {
+        return DOTween.To(() => _colorGrading.saturation, x => _colorGrading.saturation.value = x, endValue, duration);
+    }
+    
     private float GetCurrentAnimTime(Animator animator)
     {
         return animator.runtimeAnimatorController.animationClips[0].length;
