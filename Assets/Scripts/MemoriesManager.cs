@@ -2,8 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using Debug = System.Diagnostics.Debug;
 
 public enum MemoryType
 {
@@ -31,14 +34,16 @@ public class MemoriesManager : MonoBehaviour
     [SerializeField]
     private List<Memory> memoriesList = new();
 
-    private readonly Dictionary<MemoryType, Memory> _memories = new Dictionary<MemoryType, Memory>();
+    private readonly Dictionary<MemoryType, Memory> _memories = new();
 
+    [SerializeField]
+    private SpriteRenderer memoryButtonGuide;
+    
     internal bool IsMemoryPlaying;
     
     private PostProcessVolume _postProcess;
     private ColorGrading _colorGrading;
 
-    
     private void Awake()
     {
         foreach (var memory in memoriesList)
@@ -52,13 +57,26 @@ public class MemoriesManager : MonoBehaviour
         _postProcess.profile.TryGetSettings(out _colorGrading);
     }
 
+    public void ShowMemoryButtonGuide(Vector2 memoryButtonPosition)
+    {
+        var parent = memoryButtonGuide.transform.parent;
+        parent.position = new Vector2(memoryButtonPosition.x + memoryButtonGuide.size.x, parent.position.y);
+        parent.gameObject.SetActive(true);
+        memoryButtonGuide.DOFade(1f, 0.1f);
+    }
+
+    public void HideMemoryButtonGuide()
+    {
+        memoryButtonGuide.DOFade(0f, 0.1f).OnComplete((() => memoryButtonGuide.transform.parent.gameObject.SetActive(false)));
+    }
+
     public void OnMemoryEnd(GameObject memoryGameObject)
     {
-        IsMemoryPlaying = false;
         memoryGameObject.GetComponent<SpriteRenderer>().DOFade(0f, 0.5f).OnComplete(() =>
         {
             memoryGameObject.SetActive(false);
             memoryGameObject.GetComponent<Animator>().SetBool(PlayAnimationParam, false);
+            IsMemoryPlaying = false;
         });
     }
 
@@ -85,20 +103,21 @@ public class MemoriesManager : MonoBehaviour
         animator.gameObject.GetComponent<SpriteRenderer>().DOFade(1f, .5f);
 
         float animTime = GetCurrentAnimTime(animator);
+
+        // if (saturationTween.IsPlaying())
+        //     yield return new WaitWhile(() => saturationTween.IsPlaying());
         
         DOTween.To(() => _colorGrading.saturation, x => _colorGrading.saturation.value = x, 0f, animTime * 3/4).OnComplete(() =>
         {
             DOTween.To(() => _colorGrading.saturation, x => _colorGrading.saturation.value = x,
-                -100f, animTime / 2);
+                -100f, animTime * 1.2f);
         });
+        
     }
 
     private float GetCurrentAnimTime(Animator animator)
     {
         return animator.runtimeAnimatorController.animationClips[0].length;
-        // var currentClipInfo = animator.GetCurrentAnimatorClipInfo(0);
-        // var currentClipLength = currentClipInfo[0].clip.length;
-        // return currentClipLength;
     }
     
 }
