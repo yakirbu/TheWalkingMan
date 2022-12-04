@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private bool CanMove()
     {
-        return _horizontalMovement != 0 && !_memoriesManager.IsMemoryPlaying;
+        return _horizontalMovement != 0 && !_memoriesManager.IsMemoryPlaying2;
     }
 
     private bool IsLookingAtMemory(MemoryType memoryType)
@@ -123,31 +124,70 @@ public class PlayerController : MonoBehaviour
     void OnTriggerExit2D(Collider2D other) 
     {
         _isNearMemory = false;
-        _hideMemoryGuideButton = false;
+        shouldShowMemoryButton = true;
+        isMemoryButtonVisible = false;
         _memoriesManager.HideMemoryButtonGuide();
     }
+    
+    bool isMemoryButtonVisible = false;
+    bool shouldShowMemoryButton = true;
 
+    private IEnumerator MemoryHeadAnimationControl()
+    {
+        _animator.SetBool(MemoryHeadAnimation, true);
+        yield return new WaitForSeconds(7f);
+        _animator.SetBool(MemoryHeadAnimation, false);
+    }
+    
     private void Update()
     {
         if (_isNearMemory)
         {
-            if(!_hideMemoryGuideButton)
-                _memoriesManager.ShowMemoryButtonGuide(transform.position);
-            
-            if (!Input.GetKeyDown(KeyCode.Space) || _memoryType == MemoryType.None) 
-                return;
-            
-            memoryStartSound.Play();
-            _memoriesManager.HideMemoryButtonGuide();
-            _hideMemoryGuideButton = true;
-            
-            if (IsLookingAtMemory(_memoryType))
+            if (IsLookingAtMemory(_memoryType) && shouldShowMemoryButton && !isMemoryButtonVisible)
             {
-                //_animator.SetTrigger(MemoryHeadAnimation);
+                isMemoryButtonVisible = true;
+                _memoriesManager.ShowMemoryButtonGuide();
+            }
+            _memoriesManager.UpdateMemoryButtonPosition(transform.position);
+            
+            /*if (!_hideMemoryGuideButton)
+                StartCoroutine(_memoriesManager.ShowMemoryButtonGuide(transform.position));*/
+            
+            if (Input.GetKeyDown(KeyCode.Space) && _memoryType != MemoryType.None && IsLookingAtMemory(_memoryType))
+            {
+                // Play animation
                 StartCoroutine(_memoriesManager.StartMemory(_memoryType));
             }
+            
+            if (Input.GetKeyDown(KeyCode.Space) && _memoryType != MemoryType.None || !IsLookingAtMemory(_memoryType))
+            {
+                if (Input.GetKeyDown(KeyCode.Space) && _memoryType != MemoryType.None)
+                {
+                    // Hide memory button
+                    shouldShowMemoryButton = false;
+                    memoryStartSound.Play();
+                    StartCoroutine(MemoryHeadAnimationControl());
+
+                }
+                else
+                    shouldShowMemoryButton = true;
+                
+                if (isMemoryButtonVisible)
+                {
+                    _memoriesManager.HideMemoryButtonGuide();
+                }
+                isMemoryButtonVisible = false;
+            }
+            
+            
+
+            /*
+            _hideMemoryGuideButton = true;
+            */
+            
+            
         }
-        
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             ResetPlayerPosition();

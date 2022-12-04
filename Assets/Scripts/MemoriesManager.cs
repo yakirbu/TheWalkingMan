@@ -39,6 +39,7 @@ public class MemoriesManager : MonoBehaviour
     [SerializeField]
     private SpriteRenderer memoryButtonGuide;
 
+    internal bool IsMemoryPlaying2;
     internal bool IsMemoryPlaying;
     
     private PostProcessVolume _postProcess;
@@ -57,17 +58,31 @@ public class MemoriesManager : MonoBehaviour
         _postProcess.profile.TryGetSettings(out _colorGrading);
     }
 
-    public void ShowMemoryButtonGuide(Vector2 memoryButtonPosition)
+    public void ShowMemoryButtonGuide()
+    {
+        var parent = memoryButtonGuide.transform.parent;
+        parent.gameObject.SetActive(true);
+        //yield return new WaitForSeconds(0.5f);
+        var color = memoryButtonGuide.color;
+        color.a = 0;
+        memoryButtonGuide.color = color;
+        memoryButtonGuide.DOFade(1f, .5f);
+    }
+    
+    public void UpdateMemoryButtonPosition(Vector2 memoryButtonPosition)
     {
         var parent = memoryButtonGuide.transform.parent;
         parent.position = new Vector2(memoryButtonPosition.x + memoryButtonGuide.size.x, parent.position.y);
-        parent.gameObject.SetActive(true);
-        memoryButtonGuide.DOFade(1f, 0.1f);
     }
+    
+    
 
     public void HideMemoryButtonGuide()
     {
-        memoryButtonGuide.DOFade(0f, 0.1f).OnComplete((() => memoryButtonGuide.transform.parent.gameObject.SetActive(false)));
+        memoryButtonGuide.DOFade(0f, 0.25f).OnComplete((() =>
+        {
+            memoryButtonGuide.transform.parent.gameObject.SetActive(false);
+        }));
     }
 
     public void OnMemoryEnd(GameObject memoryGameObject)
@@ -76,7 +91,7 @@ public class MemoriesManager : MonoBehaviour
         {
             memoryGameObject.SetActive(false);
             memoryGameObject.GetComponent<Animator>().SetBool(PlayAnimationParam, false);
-            IsMemoryPlaying = false;
+            IsMemoryPlaying2 = false;
         });
     }
 
@@ -90,10 +105,11 @@ public class MemoriesManager : MonoBehaviour
     
     public IEnumerator StartMemory(MemoryType memoryType)
     {
-        if (IsMemoryPlaying)
+        if (IsMemoryPlaying2)
             yield break;
         
         IsMemoryPlaying = true;
+        IsMemoryPlaying2 = true;
 
         var animator = _memories[memoryType].memoryAnimator;
         
@@ -110,7 +126,7 @@ public class MemoriesManager : MonoBehaviour
        
         Saturate(0f, animTime * 3 / 4).OnComplete(() =>
         {
-            Saturate(-100f, animTime * 1.2f);
+            Saturate(-100f, animTime * 1.1f).OnComplete(()=> IsMemoryPlaying = false);
         });
     }
 
