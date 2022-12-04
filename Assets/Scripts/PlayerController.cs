@@ -153,11 +153,7 @@ public class PlayerController : MonoBehaviour
             /*if (!_hideMemoryGuideButton)
                 StartCoroutine(_memoriesManager.ShowMemoryButtonGuide(transform.position));*/
             
-            if (Input.GetKeyDown(KeyCode.Space) && _memoryType != MemoryType.None && IsLookingAtMemory(_memoryType))
-            {
-                // Play animation
-                StartCoroutine(_memoriesManager.StartMemory(_memoryType));
-            }
+         
             
             if (Input.GetKeyDown(KeyCode.Space) && _memoryType != MemoryType.None || !IsLookingAtMemory(_memoryType))
             {
@@ -165,8 +161,11 @@ public class PlayerController : MonoBehaviour
                 {
                     // Hide memory button
                     shouldShowMemoryButton = false;
-                    memoryStartSound.Play();
-                    StartCoroutine(MemoryHeadAnimationControl());
+                    if (!_memoriesManager.IsMemoryPlaying2 && IsLookingAtMemory(_memoryType))
+                    {
+                        memoryStartSound.Play();
+                        StartCoroutine(MemoryHeadAnimationControl());
+                    }
 
                 }
                 else
@@ -179,6 +178,11 @@ public class PlayerController : MonoBehaviour
                 isMemoryButtonVisible = false;
             }
             
+            if (Input.GetKeyDown(KeyCode.Space) && _memoryType != MemoryType.None && IsLookingAtMemory(_memoryType))
+            {
+                // Play animation
+                StartCoroutine(_memoriesManager.StartMemory(_memoryType));
+            }
             
 
             /*
