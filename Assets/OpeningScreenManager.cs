@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,13 @@ public class OpeningScreenManager : MonoBehaviour
     private Button playButton;
     [SerializeField]
     private Button creditsButton;
-    
+
+    private void Awake()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     void Start()
     {
         playButton.onClick.AddListener(() =>
