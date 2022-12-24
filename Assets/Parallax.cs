@@ -15,7 +15,6 @@ public class Parallax : MonoBehaviour
     void Start()
     {
         startpos = transform.position.x;
-        length = GetComponent<SpriteRenderer>().bounds.size.x;
         _playerController = FindObjectOfType<PlayerController>();
         camPosOffset = cam.transform.position.x;
     }
@@ -23,6 +22,8 @@ public class Parallax : MonoBehaviour
     private bool first = true;
     void Update()
     {
+        if (_playerController == null)
+            return;
         if(Mathf.Abs(_playerController.transform.position.x - transform.position.x) > 15)
         {
             return;
