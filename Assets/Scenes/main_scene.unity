@@ -671,8 +671,8 @@ MonoBehaviour:
   - {fileID: 1892061225}
   - {fileID: 6877182}
   m_Bounds:
-    m_Center: {x: 0, y: -0.000029802322, z: 0}
-    m_Extent: {x: 1.345, y: 3.64116, z: 0}
+    m_Center: {x: 0, y: -0.000029087067, z: 0}
+    m_Extent: {x: 1.345, y: 3.6411605, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb5392c7e41f5b4798988192c6f97e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 4
   memoryStartSound: {fileID: 1125783529}
   footstepsSound: {fileID: 2096435390}
   arrowsGuide: {fileID: 553207032}
@@ -1043,7 +1043,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103955685}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.67, y: 0.22763157, z: 1.2758021}
+  m_LocalPosition: {x: 5.67, y: 0.74, z: 1.2758021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3229,8 +3229,8 @@ MonoBehaviour:
   - {fileID: 775973849}
   - {fileID: 1284267232}
   m_Bounds:
-    m_Center: {x: 0.00035881996, y: 0, z: 0}
-    m_Extent: {x: 1.3346412, y: 4.489999, z: 0}
+    m_Center: {x: 0.00035881996, y: 0.00000047683716, z: 0}
+    m_Extent: {x: 1.3346412, y: 4.4899993, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -3531,7 +3531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.05
 --- !u!1 &319319023
 GameObject:
   m_ObjectHideFlags: 0
@@ -3765,7 +3765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: 0
 --- !u!1 &340468524
 GameObject:
   m_ObjectHideFlags: 0
@@ -4874,7 +4874,7 @@ MonoBehaviour:
   - {fileID: 2068017351}
   - {fileID: 1713063824}
   m_Bounds:
-    m_Center: {x: 0, y: -0.000029325485, z: 0}
+    m_Center: {x: 0, y: -0.000029087067, z: 0}
     m_Extent: {x: 1.3449924, y: 3.6411607, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -5011,7 +5011,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467194778}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.825531, y: -13.242671, z: 1.7976656}
+  m_LocalPosition: {x: -2.52, y: -13.242671, z: 1.7976656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5077,13 +5077,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467194778}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f3df543d01b14df9ab4588063556996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.02
 --- !u!1 &475958488
 GameObject:
   m_ObjectHideFlags: 0
@@ -5832,13 +5832,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541796205}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f3df543d01b14df9ab4588063556996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.05
 --- !u!1 &547697428
 GameObject:
   m_ObjectHideFlags: 0
@@ -6021,8 +6021,8 @@ MonoBehaviour:
   - {fileID: 199830918}
   - {fileID: 1537818105}
   m_Bounds:
-    m_Center: {x: 0.00000023841858, y: 0.00000023841858, z: 0}
-    m_Extent: {x: 1.0700003, y: 2.5350008, z: 0}
+    m_Center: {x: 0, y: 0.00000023841858, z: 0}
+    m_Extent: {x: 1.07, y: 2.5350003, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -6431,7 +6431,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584122778}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f3df543d01b14df9ab4588063556996, type: 3}
   m_Name: 
@@ -6820,7 +6820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: 0
 --- !u!1 &634648665
 GameObject:
   m_ObjectHideFlags: 0
@@ -7406,7 +7406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.15
 --- !u!1 &658212771
 GameObject:
   m_ObjectHideFlags: 0
@@ -7876,7 +7876,7 @@ MonoBehaviour:
   - {fileID: 617055287}
   m_Bounds:
     m_Center: {x: 0.000004053116, y: 0.0012159348, z: 0}
-    m_Extent: {x: 2.8799973, y: 8.838785, z: 0}
+    m_Extent: {x: 2.8799968, y: 8.838785, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -7893,7 +7893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.15
 --- !u!1 &684925016
 GameObject:
   m_ObjectHideFlags: 0
@@ -8062,7 +8062,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d5e367a69c9634ce3ae8eaa61f7209f5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.72
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8153,13 +8153,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684925016}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f3df543d01b14df9ab4588063556996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: 0
 --- !u!4 &685603135 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 311580695235782034, guid: f62cc7f4369094b04b0ee73aacd238e8, type: 3}
@@ -8794,13 +8794,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739041150}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f3df543d01b14df9ab4588063556996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: 0
 --- !u!1 &742157725
 GameObject:
   m_ObjectHideFlags: 0
@@ -9004,7 +9004,7 @@ MonoBehaviour:
   - {fileID: 869023986}
   - {fileID: 712702614}
   m_Bounds:
-    m_Center: {x: 0, y: -0.004899025, z: 0}
+    m_Center: {x: 0, y: -0.0048999786, z: 0}
     m_Extent: {x: 1.345, y: 5.46424, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -9042,7 +9042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.05
 --- !u!1 &754966802
 GameObject:
   m_ObjectHideFlags: 0
@@ -9608,7 +9608,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801989018}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f3df543d01b14df9ab4588063556996, type: 3}
   m_Name: 
@@ -10010,6 +10010,14 @@ PrefabInstance:
     - target: {fileID: -1479728094065796908, guid: f62cc7f4369094b04b0ee73aacd238e8, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.99998206
+      objectReference: {fileID: 0}
+    - target: {fileID: -1479728094065796908, guid: f62cc7f4369094b04b0ee73aacd238e8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1479728094065796908, guid: f62cc7f4369094b04b0ee73aacd238e8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1479728094065796908, guid: f62cc7f4369094b04b0ee73aacd238e8, type: 3}
       propertyPath: m_LocalRotation.z
@@ -11495,8 +11503,8 @@ MonoBehaviour:
   - {fileID: 1320780088}
   - {fileID: 16092618}
   m_Bounds:
-    m_Center: {x: -0.025935888, y: 0.000018119812, z: 0}
-    m_Extent: {x: 1.6709728, y: 6.3950176, z: 0}
+    m_Center: {x: -0.025935888, y: 0.00001859665, z: 0}
+    m_Extent: {x: 1.6709728, y: 6.395018, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -11513,7 +11521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.05
 --- !u!1 &957315329
 GameObject:
   m_ObjectHideFlags: 0
@@ -11738,8 +11746,8 @@ MonoBehaviour:
   - {fileID: 1090209797}
   - {fileID: 838416829}
   m_Bounds:
-    m_Center: {x: 0, y: 0.0021595955, z: 0}
-    m_Extent: {x: 2.43, y: 7.7128396, z: 0}
+    m_Center: {x: 0, y: 0.0021591187, z: 0}
+    m_Extent: {x: 2.43, y: 7.712839, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -11776,7 +11784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.05
 --- !u!1 &1003368618
 GameObject:
   m_ObjectHideFlags: 0
@@ -12318,7 +12326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.05
 --- !u!1 &1027357483
 GameObject:
   m_ObjectHideFlags: 0
@@ -12448,7 +12456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.05
 --- !u!1 &1058167994
 GameObject:
   m_ObjectHideFlags: 0
@@ -13611,7 +13619,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8f978245684f340dca7cdc41f80f37b5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.523
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -14639,13 +14647,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277890553}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f3df543d01b14df9ab4588063556996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: 0
 --- !u!1 &1278926372
 GameObject:
   m_ObjectHideFlags: 0
@@ -14793,7 +14801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.05
 --- !u!1 &1280420930
 GameObject:
   m_ObjectHideFlags: 0
@@ -15169,7 +15177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: 0
 --- !u!1 &1292272534
 GameObject:
   m_ObjectHideFlags: 0
@@ -15989,7 +15997,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 884502b29682a4d189e34b17320d26eb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.528
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -16607,8 +16615,8 @@ MonoBehaviour:
   - {fileID: 1409963017}
   - {fileID: 729730886}
   m_Bounds:
-    m_Center: {x: -0.0000050365925, y: -0.0040955544, z: 0}
-    m_Extent: {x: 0.32499495, y: 4.062125, z: 0}
+    m_Center: {x: -0.00000500679, y: -0.004096031, z: 0}
+    m_Extent: {x: 0.32499498, y: 4.062125, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -16693,7 +16701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: 0
 --- !u!1 &1428047875
 GameObject:
   m_ObjectHideFlags: 0
@@ -16752,8 +16760,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433090328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.7, y: -8.5, z: 0}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_LocalPosition: {x: -9.19, y: -8.5, z: 0}
+  m_LocalScale: {x: 1.1275, y: 1.1275, z: 1.1275}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 320649085}
@@ -17846,7 +17854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.05
 --- !u!1 &1526619270
 GameObject:
   m_ObjectHideFlags: 0
@@ -17977,7 +17985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.15
 --- !u!1 &1536976664
 GameObject:
   m_ObjectHideFlags: 0
@@ -18563,7 +18571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.15
 --- !u!1 &1599773738
 GameObject:
   m_ObjectHideFlags: 0
@@ -18971,7 +18979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: 0
 --- !u!1 &1659817287
 GameObject:
   m_ObjectHideFlags: 0
@@ -19080,7 +19088,7 @@ MonoBehaviour:
   - {fileID: 1723881573}
   - {fileID: 1382754831}
   m_Bounds:
-    m_Center: {x: -0.0008598566, y: 0.0017056465, z: 0}
+    m_Center: {x: -0.0008599758, y: 0.0017061234, z: 0}
     m_Extent: {x: 1.3491402, y: 5.236706, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -19118,7 +19126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.05
 --- !u!1 &1661149739
 GameObject:
   m_ObjectHideFlags: 0
@@ -20354,7 +20362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.15
 --- !u!1 &1838139375
 GameObject:
   m_ObjectHideFlags: 0
@@ -20843,7 +20851,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7d39978054e2e4e8b86a506520c01632, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -21644,7 +21652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: 0
 --- !u!1 &1892061224
 GameObject:
   m_ObjectHideFlags: 0
@@ -22161,7 +22169,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b0cec41ea5e1d4568bba18d47b4acf9e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -22580,7 +22588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.05
+  parallaxEffect: -0.15
 --- !u!1 &1948706614
 GameObject:
   m_ObjectHideFlags: 0
@@ -22825,7 +22833,7 @@ MonoBehaviour:
   - {fileID: 139208543}
   - {fileID: 36560636}
   m_Bounds:
-    m_Center: {x: 0.0000038146973, y: -0.000029325485, z: 0}
+    m_Center: {x: 0.0000038146973, y: -0.000029087067, z: 0}
     m_Extent: {x: 1.3449962, y: 3.6411607, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -24811,7 +24819,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029831805}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f3df543d01b14df9ab4588063556996, type: 3}
   m_Name: 
@@ -25193,7 +25201,7 @@ MonoBehaviour:
   - {fileID: 1280420931}
   - {fileID: 758209922}
   m_Bounds:
-    m_Center: {x: 0, y: -0.000029325485, z: 0}
+    m_Center: {x: 0, y: -0.000029087067, z: 0}
     m_Extent: {x: 1.345, y: 3.6411607, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -25517,8 +25525,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 47fc06ca76b4e4def9acfc962a7517f1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.647
-  m_Pitch: 1
+  m_Volume: 0.404
+  m_Pitch: 1.18
   Loop: 1
   Mute: 0
   Spatialize: 0
